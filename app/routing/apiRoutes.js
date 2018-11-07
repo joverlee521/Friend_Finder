@@ -11,6 +11,9 @@ module.exports = function(app){
     app.post("/api/friends", function(req, res){
         // Grabs the data that user has entered
         var newFriends = req.body;
+        newFriends.scores = newFriends.scores.map(function(x){
+            return parseInt(x);
+        });
         var newScores = newFriends.scores;
         // New array to store the difference between user's scores
         var differenceArray = [];
