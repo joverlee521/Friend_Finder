@@ -252,6 +252,29 @@
             </div>
         </div>
     </div>
+    <!-- Error Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="error-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <!-- Modal title -->
+                    <h5 class="modal-title">Something went wrong!</h5>
+                    <!-- Close Modal Button -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body text-center">
+                    <h6>Please answer all survey questions!</h6>
+                </div>
+                <div class="modal-footer">
+                    <!-- Close Modal Button -->
+                    <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -266,20 +289,22 @@
             var name = $("#name-input").val();
             var photo = $("#photo-input").val();
             var scores = [];
-            var q1 = $("input[name=question1]:checked").val();
-            var q2 = $("input[name=question2]:checked").val();
-            var q3 = $("input[name=question3]:checked").val();
-            var q4 = $("input[name=question4]:checked").val();
-            var q5 = $("input[name=question5]:checked").val();
-            var q6 = $("input[name=question6]:checked").val();
-            var q7 = $("input[name=question7]:checked").val();
-            var q8 = $("input[name=question8]:checked").val();
-            var q9 = $("input[name=question9]:checked").val();
-            var q10 = $("input[name=question10]:checked").val();
+            var q1 = parseInt($("input[name=question1]:checked").val());
+            var q2 = parseInt($("input[name=question2]:checked").val());
+            var q3 = parseInt($("input[name=question3]:checked").val());
+            var q4 = parseInt($("input[name=question4]:checked").val());
+            var q5 = parseInt($("input[name=question5]:checked").val());
+            var q6 = parseInt($("input[name=question6]:checked").val());
+            var q7 = parseInt($("input[name=question7]:checked").val());
+            var q8 = parseInt($("input[name=question8]:checked").val());
+            var q9 = parseInt($("input[name=question9]:checked").val());
+            var q10 = parseInt($("input[name=question10]:checked").val());
             scores.push(q1,q2,q3,q4,q5,q6,q7,q8,q9,q10);
+            // Loops through scores to check if any are undefined
             for(var i = 0; i < scores.length; i++){
-                if(typeof scores[i] === undefined){
-                    console.log(false);
+                if(scores[i] == undefined){
+                    // Show error modal if undefined 
+                    return $("#error-modal").modal("show");
                 }
             }
             // Store form elements in a new object
