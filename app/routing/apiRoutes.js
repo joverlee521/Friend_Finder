@@ -11,6 +11,7 @@ module.exports = function(app){
     app.post("/api/friends", function(req, res){
         // Grabs the data that user has entered
         var newFriends = req.body;
+        // Converts scores to integers on server side
         newFriends.scores = newFriends.scores.map(function(x){
             return parseInt(x);
         });
