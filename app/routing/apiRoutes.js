@@ -21,6 +21,7 @@ module.exports = function(app){
             differenceArray.push(result);
         }
         var bestIndex = differenceArray.indexOf(Math.min(...differenceArray));
+        friends.push(newFriends);
         return res.json(friends[bestIndex]);
     });
 }
