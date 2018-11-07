@@ -1,3 +1,4 @@
+// Data array 
 var friends = [
     {
         name: "Luffy",
